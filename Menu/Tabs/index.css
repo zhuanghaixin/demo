@@ -1,0 +1,26 @@
+*{
+    list-style: none;
+}
+.tabs{
+
+}
+.tabs>.tabs-bar{
+    display: flex;
+    border-bottom: 1px solid #f00;
+}
+.tabs>.tabs-bar>li{
+    padding:4px 8px;
+    border:1px solid transparent;
+}
+.tabs>.tabs-bar>li:hover{
+    border-color:red
+}
+.tabs>.tabs-bar>li.active{
+    border-color:blue;
+}
+.tabs>.tabs-content>li{
+    display:none;
+}
+.tabs>.tabs-content>li.active{
+    display:block;
+}
