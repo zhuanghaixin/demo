@@ -95,6 +95,6 @@ class Tabs{
 let tabs=new Tabs('.tabs')
 
 //导入
-import {Tabs} from './wheel.js'
-let tabs=new Tabs('.tabs')
+// import {Tabs} from './wheel.js'
+// let tabs=new Tabs('.tabs')
 
