@@ -1,0 +1,32 @@
+*{
+    padding:0;
+    margin: 0;
+}
+
+h1{
+    text-align: center;
+}
+.container{
+    position:relative;
+    width: 1226px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.wrap{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+header{
+    /*background: #999;*/
+    height: 50px;
+}
+.content{
+    /*background: orange;*/
+    height: calc(100vh - 100px);
+}
+footer h3{
+    /*background: #333;*/
+    height: 50px;
+    text-align: center;
+}
