@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popup</title>
+    <style>
+        section {
+            width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        ul,li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .card {
+            position: absolute;
+            border: 1px solid #ccc;
+            width: 200px;
+            display: none;
+        }
+        .card li {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            cursor: pointer
+        }
+    </style>
+</head>
+<body>
+<section>
+    <h1>你选择了 <span class="choice"></span></h1>
+    <button class="btn">点我</button>
+    <ul class="card">
+        <li>菜单1</li>
+        <li>菜单2</li>
+        <li>菜单3</li>
+    </ul>
+</section>
+<script src="popup.js"></script>
+</body>
+</html>
