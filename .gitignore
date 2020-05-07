@@ -41,6 +41,7 @@ jscoverage_lib/
 bower_components/
 dist/
 resource/
+TypeScript-Projects
 Vue-Projects/
 React-Projects/
 Menu/

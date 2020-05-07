@@ -9,30 +9,7 @@ const passwordConfirm = document.getElementById('password-confirm')
 //事件监听
 form.addEventListener('submit', (e) => {
     e.preventDefault()
-    // console.log(username.value)
-    if (username.value === '') {
-        showError(username, "用户名必填")
-    }else{
-        showSuccess(username)
-    }
-
-    if (email.value === '') {
-        showError(email, "邮箱必填")
-    }else if(!isValidEMail(email.value)){
-        showError(email, "邮箱格式错误")
-    }else{
-        showSuccess(email)
-    }
-    if (password.value === '') {
-        showError(password, "密码必填")
-    }else{
-        showSuccess(password)
-    }
-    if (passwordConfirm.value === '') {
-        showError(passwordConfirm, "用户名必填")
-    }else{
-        showSuccess(passwordConfirm)
-    }
+    checkRequired([username,email,password,passwordConfirm])
 
 })
 
@@ -62,3 +39,19 @@ function isValidEMail(email) {
     return reg.test(String(email))
 }
 
+
+//表单验证函数封装
+function checkRequired(inputArr){
+    inputArr.forEach((input)=>{
+        console.log(input)
+       if(input.value.trim()===''){
+           showError(input,`${getKeywords(input)}为必填项`)
+       }else{
+           showSuccess(input)
+       }
+    })
+}
+//提取关键字
+function getKeywords(input){
+    return input.placeholder.slice(0,3)
+}
