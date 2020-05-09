@@ -1,6 +1,6 @@
 const seatContainer=document.querySelector('.seat-container');
 // const seats=document.querySelectorAll('.row .seat:not(.occupied)')
-const seats=document.querySelectorAll('.row .seat:not(.occupied) use')
+const seats=document.querySelectorAll('.row .seat:not(.occupied) use') //当前选的座位
 const count=document.getElementById('count');
 const total=document.getElementById('total');
 const movieSelector=document.getElementById('movie')
@@ -9,6 +9,9 @@ let ticketPrice=+movieSelector.value
 
 //选择票价 并更新数据
 movieSelector.addEventListener('change',(e)=> {
+    //将下拉框选择的数据 ，之后也要存储
+    setMovieData(e.target.selectedIndex,e.target.value)
+
     console.log(+e.target.value)
     console.log(typeof e.target.value)
     ticketPrice =+e.target.value
@@ -16,6 +19,29 @@ movieSelector.addEventListener('change',(e)=> {
     updateSelectCount()
 
 })
+//本地存储索引
+function setSelectedSeats(selectedSeats){
+    const seatS=document.querySelectorAll('.row .seat')
+    // console.log(seatS);
+
+
+    const seatIndex=[...selectedSeats].map((seat)=>{
+        //获取当前选的座位 所在的索引
+        // console.log(seat)
+        // console.log([...seatS])
+        return [...seatS].indexOf(seat)
+    })
+
+    localStorage.setItem('selectedSeats',JSON.stringify(seatIndex))
+}
+// 保存电影索引值和票价
+function setMovieData(index,price){
+    localStorage.setItem('setMovieIndex',index)
+    localStorage.setItem('setMoviePrice',price)
+}
+
+
+
 
 console.log(seats)
 //选择座位 事件代理
@@ -39,9 +65,18 @@ seatContainer.addEventListener('click',(e)=>{
 //更新数据
 function updateSelectCount() {
     const selectedSeats=document.querySelectorAll(".row .seat.selected")
-    console.log(selectedSeats)
+
+        //本地存储位置索引
+    setSelectedSeats(selectedSeats)
+
+    // console.log(seatIndex)
+    // console.log(selectedSeats)
     const selectedSeatsCount=Array.from(selectedSeats).length
-    console.log(selectedSeatsCount)
+    // console.log(selectedSeatsCount)
+    //更新数量
     count.innerText=selectedSeatsCount
+    //更新价格
     total.innerText=selectedSeatsCount*ticketPrice
 }
+
+
