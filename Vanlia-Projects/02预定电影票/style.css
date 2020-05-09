@@ -118,3 +118,6 @@ li{
     display:flex;
     justify-content:center;
 }
+.text span{
+    color:#6feaf6;
+}
