@@ -22,6 +22,10 @@ movieSelector.addEventListener('change',(e)=> {
 })
 //本地存储索引
 function setSelectedSeats(selectedSeats){
+    // const seatS=document.querySelectorAll('.row .seat')
+    // console.log(seatS);
+
+
     const seatIndex=[...selectedSeats].map((seat)=>{
         //获取当前选的座位 所在的索引
         // console.log(seat)
@@ -33,8 +37,8 @@ function setSelectedSeats(selectedSeats){
 }
 // 保存电影索引值和票价
 function setMovieData(index,price){
-    localStorage.setItem('setMovieIndex',index)
-    localStorage.setItem('setMoviePrice',price)
+    localStorage.setItem('selectedMovieIndex',index)
+    localStorage.setItem('selectedMoviePrice',price)
 }
 
 
@@ -77,19 +81,35 @@ function updateSelectCount() {
 }
 
 //获取数据渲染样式
-// function populateUI(){
-//     const selectedSeats=JSON.parse(localStorage.getItem("selectedSeats"))
-//     console.log(selectedSeats)
-//     if(selectedSeats!==null&&selectedSeats.length>0){
-//         seatS.forEach((seat,index)=>{
-//             if(selectedSeats.indexOf(index)>-1){
-//                 console.log(seatS)
-//                 console.log(selectedSeats)
-//                 // seatS.classList.add('selected')
-//             }
-//         })
-//
-//     }
-// }
+function populateUI(){
+    //座位渲染
+    const selectedSeats=JSON.parse(localStorage.getItem("selectedSeats"))
+    console.log(selectedSeats)  //[1,3,5,6]
+
+    if(selectedSeats!==null&&selectedSeats.length>0){
+        seatS.forEach((seat,index)=>{
+            if(selectedSeats.indexOf(index)>-1){
+                console.log(seatS)
+                console.log(seat)
+                console.log(selectedSeats)
+                seat.classList.add('selected')
+            }
+        })
+
+    }
+    //选择渲染
+    const selectedMovieIndex=localStorage.getItem('selectedMovieIndex');
+        const selectedtMoviePrice=localStorage.getItem('selectedMoviePrice')
+    console.log(selectedtMoviePrice);
+        if(selectedMovieIndex!==null){
+            movieSelector.selectedIndex=selectedMovieIndex
+        }
+        if(selectedtMoviePrice!==null){
+            ticketPrice=+selectedtMoviePrice
+        }
+}
 
 populateUI()
+
+//设置初始数据座位和总价
+updateSelectCount()
