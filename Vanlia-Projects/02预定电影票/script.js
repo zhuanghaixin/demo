@@ -1,6 +1,7 @@
 const seatContainer=document.querySelector('.seat-container');
 // const seats=document.querySelectorAll('.row .seat:not(.occupied)')
 const seats=document.querySelectorAll('.row .seat:not(.occupied) use') //当前选的座位
+const seatS=document.querySelectorAll('.row .seat')
 const count=document.getElementById('count');
 const total=document.getElementById('total');
 const movieSelector=document.getElementById('movie')
@@ -21,10 +22,6 @@ movieSelector.addEventListener('change',(e)=> {
 })
 //本地存储索引
 function setSelectedSeats(selectedSeats){
-    const seatS=document.querySelectorAll('.row .seat')
-    // console.log(seatS);
-
-
     const seatIndex=[...selectedSeats].map((seat)=>{
         //获取当前选的座位 所在的索引
         // console.log(seat)
@@ -79,4 +76,20 @@ function updateSelectCount() {
     total.innerText=selectedSeatsCount*ticketPrice
 }
 
+//获取数据渲染样式
+// function populateUI(){
+//     const selectedSeats=JSON.parse(localStorage.getItem("selectedSeats"))
+//     console.log(selectedSeats)
+//     if(selectedSeats!==null&&selectedSeats.length>0){
+//         seatS.forEach((seat,index)=>{
+//             if(selectedSeats.indexOf(index)>-1){
+//                 console.log(seatS)
+//                 console.log(selectedSeats)
+//                 // seatS.classList.add('selected')
+//             }
+//         })
+//
+//     }
+// }
 
+populateUI()
